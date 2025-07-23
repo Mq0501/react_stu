@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PubSub from "pubsub-js";
 import axios from "axios";
 
 export default class index extends Component {
@@ -8,18 +7,19 @@ export default class index extends Component {
     const {
       keyWordElement: { value: keyWord },
     } = this;
-    // 发布消息
-    PubSub.publish("users", { isFirst: false, isLoading: true });
+
+    this.props.updateAppState({ isFirst: false, isLoading: true });
+
     // 发送网络请求
     axios.get(`/api/search/users?q=${keyWord}`).then(
       (response) => {
-        PubSub.publish("users", {
+        this.props.updateAppState({
           isLoading: false,
           users: response.data.items,
         });
       },
       (error) => {
-        PubSub.publish("users", { isLoading: false, err: error.message });
+        this.props.updateAppState({ isLoading: false, err: error.message });
       }
     );
   };
