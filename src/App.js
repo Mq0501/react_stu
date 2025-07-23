@@ -1,35 +1,25 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+import Search from './component/Search'
+import Card from './component/Card'
 
 export default class App extends Component {
-    getStudentData = () => {
-        axios.get('/api1/students').then(
-            response => {
-                console.log('成功了', response.data)
-            },
-            error => {
-                console.log('失败了', error)
-            }
-        )
+    state = {  // 初始化状态
+        users: [],  // users初始值为数组
+        isFirst: true,  // 是否为第一次打开页面
+        isLoading: false,  // 标识是否处于加载中
+        err: '',  // 存储请求相关的错误信息
     }
 
-    getCarData = () => {
-        axios.get('/api2/cars').then(
-            response => {
-                console.log('成功', response.data)
-            },
-            error => {
-                console.log('失败', error)
-            }
-        )
-
+    // 更新users的方法
+    updateAppState = (stateObj) => {
+        this.setState(stateObj)
     }
 
     render() {
         return (
-            <div>
-                <button onClick={this.getStudentData}>点我获取数据</button>
-                <button onClick={this.getCarData}>点我获取数据</button>
+            <div className="container">
+                <Search updateAppState={this.updateAppState} />
+                <Card {...this.state} />
             </div>
         )
     }

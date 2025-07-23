@@ -1,7 +1,10 @@
 {
     "launch": {
-        
+
         "configurations": [],
         "compounds": []
-    }
+    },
+    "cSpell.words": [
+        "noreferrer"
+    ]
 }
