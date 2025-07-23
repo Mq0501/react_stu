@@ -6,6 +6,7 @@ export default class Item extends Component {
   // 对接收的props进行：类型、必要性的限制
   static propTypes = {
     updateTodo: PropTypes.func.isRequired,
+    deleteTodo: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
     done: PropTypes.bool.isRequired,
     name: PropTypes.string.isRequired,
@@ -24,6 +25,13 @@ export default class Item extends Component {
     };
   };
 
+  //   删除
+  handleDelete = (id) => {
+    if (window.confirm("确定要删除吗？")) {
+      this.props.deleteTodo(id);
+    }
+  };
+
   render() {
     const { id, name, done } = this.props;
     const { mouse } = this.state;
@@ -36,12 +44,15 @@ export default class Item extends Component {
         <label>
           <input
             type="checkbox"
-            defaultChecked={done}
+            checked={done}
             onChange={this.handleCheck(id)}
           />
           <span>{name}</span>
         </label>
         <button
+          onClick={() => {
+            this.handleDelete(id);
+          }}
           className="btn btn-danger"
           style={{ display: mouse ? "block" : "none" }}
         >
