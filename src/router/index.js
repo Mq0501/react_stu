@@ -4,7 +4,7 @@ import Article from '../page/Article'
 
 const router = createBrowserRouter([
     {
-        path: '/login',
+        path: '/login/:id',
         element: <Login />
     },
     {
