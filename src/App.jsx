@@ -1,7 +1,9 @@
-import React from 'react'
+import { Button } from "antd";
 
 export default function App() {
   return (
-    <div>App</div>
-  )
+    <div>
+      <Button type="primary">Button</Button>
+    </div>
+  );
 }
