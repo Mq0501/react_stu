@@ -22,7 +22,8 @@
         "react-scripts": "5.0.1",
         "sass": "^1.89.2",
         "source-map-explorer": "^2.5.3",
-        "web-vitals": "^2.1.4"
+        "web-vitals": "^2.1.4",
+        "zustand": "^5.0.6"
     },
     "scripts": {
         "start": "craco start",
