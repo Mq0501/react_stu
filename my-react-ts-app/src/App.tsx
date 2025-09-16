@@ -1,14 +1,13 @@
-import { useEffect, useRef } from "react";
+import { Suspense } from "react";
+import { useRoutes } from "react-router-dom";
+import { router } from "./router/index";
+import "@ant-design/icons";
 function App() {
-  const timerRef = useRef<NodeJS.Timeout | undefined>(undefined);
-  useEffect(() => {
-    timerRef.current = setInterval(() => {
-      console.log("1");
-    }, 1000);
-
-    return () => clearInterval(timerRef.current);
-  }, []);
-  return <>this is div</>;
+  return (
+    <>
+      <Suspense>{useRoutes(router)}</Suspense>
+    </>
+  );
 }
 
 export default App;

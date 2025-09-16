@@ -6,6 +6,10 @@
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
+    "baseUrl": ".", // 基础路径（必须配置，否则 paths 可能不生效）
+    "paths": {
+      "@/*": ["src/*"] // 表示 @/xxx 对应 src/xxx
+    },
 
     /* Bundler mode */
     "moduleResolution": "bundler",
